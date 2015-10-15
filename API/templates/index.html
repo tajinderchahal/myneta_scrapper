@@ -2,7 +2,7 @@
 
 {% block content %}
  <div class="row">
-   <div class="col-md-6 col-md-offset-3">
+   <div class="col-md-8 col-md-offset-2">
      <div class="col-md-12 thumbnail source">
        <div class="logo">
          <img src="/static/img/myneta-logo.jpg"/>
@@ -31,6 +31,12 @@
        <!-- WINNER DATA STARTS -->
        <div class="col-md-12" style="margin-top: 30px;">
          <div class="text-center" ng-if="show_loading">Loading winner data ...</div>
+         <h3 class="text-center" ng-if="no_data">No Data Found !</h3>
+ 
+         <div ng-if="winner_data.length" class="thumbnail" style="font-size: 13px;">
+           API link: <a href="{[{ url }]}" target="_blank">{[{ url }]}</a>
+         </div>
+         <br>
          <table class="table table-condensed table-bordered table-striped" ng-if="winner_data.length">
            <thead>
              <tr>
