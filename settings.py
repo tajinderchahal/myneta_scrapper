@@ -55,9 +55,6 @@ TEMPLATE_DIRS = (
 
 ROOT_URLCONF = 'urls'
 
-WSGI_APPLICATION = 'wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
