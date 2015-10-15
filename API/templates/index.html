@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <div class="row">
+   <div class="col-md-6 col-md-offset-3">
+     <div class="col-md-12 thumbnail source">
+       <div class="logo">
+         <img src="/static/img/myneta-logo.jpg"/>
+       </div>
+       <!-- FILTERS STARTS -->
+       <div class="col-md-12 filters">
+         <div class="col-md-6">
+           <label>Select State: </label>
+           <select class="form-control" ng-model="mnstate" ng-change="get_winner_data()">
+             <option value="">Select State</option>
+             <option ng-repeat="state in mynetastate" value="{[{state[1]}]}">
+               {[{ state[0] }]}
+             </option>
+           </select> 
+         </div>
+         <div class="col-md-6">
+           <label>Select Year: </label>
+           <select class="form-control" ng-model="electionyear" ng-change="get_winner_data()">
+             <option value="" selected>Select Year</option>
+             <option ng-repeat="i in getrange(16) track by $index" value="{[{$index + 2000}]}">{[{$index + 2000}]}</option>
+           </select> 
+         </div>
+       </div>
+       <!-- FILTERS ENDS -->
+
+       <!-- WINNER DATA STARTS -->
+       <div class="col-md-12" style="margin-top: 30px;">
+         <div class="text-center" ng-if="show_loading">Loading winner data ...</div>
+         <table class="table table-condensed table-bordered table-striped" ng-if="winner_data.length">
+           <thead>
+             <tr>
+               <th>Name</th>
+               <th>Constituency</th>
+               <th>Criminal Cases</th>
+               <th>Education</th>
+               <th>Party</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr ng-repeat="winner in winner_data">
+               <td>{[{ winner.name }]}</td>
+               <td>{[{ winner.constituency }]}</td>
+               <td>{[{ winner.criminal_case }]}</td>
+               <td>{[{ winner.education }]}</td>
+               <td>{[{ winner.party }]}</td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+       <!-- WINNER ENDS -->
+
+     </div>
+   </div>  
+   <!--<div class="col-md-6">
+     <div class="col-md-12 thumbnail source">
+       <div class="logo">
+         <img src="/static/img/indiankanoon_top.png"/>
+       </div>
+     </div>
+   </div> -->
+ </div>
+{% endblock content %}
